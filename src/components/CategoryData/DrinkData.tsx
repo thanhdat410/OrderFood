@@ -5,7 +5,8 @@ const drink = [
     image: require("../../assets/Drink1.png"),
     beforeDiscount: "30.000đ",
     price: "27.000đ",
-    quantity: "Còn 15 suất",
+    quantity: 1,
+    note: "Còn 15 suất",
   },
   {
     id: "2",
@@ -13,7 +14,8 @@ const drink = [
     image: require("../../assets/Drink2.png"),
     beforeDiscount: "30.000đ",
     price: "27.000đ",
-    quantity: "Còn 15 suất",
+    quantity: 1,
+    note: "Còn 15 suất",
   },
   {
     id: "3",
@@ -21,7 +23,8 @@ const drink = [
     image: require("../../assets/Drink1.png"),
     beforeDiscount: "30.000đ",
     price: "27.000đ",
-    quantity: "Còn 15 suất",
+    quantity: 1,
+    note: "Còn 15 suất",
   },
 ];
 

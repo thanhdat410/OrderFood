@@ -5,7 +5,8 @@ const sideDish = [
     image: require("../../assets/Dish4.png"),
     beforeDiscount: "30.000đ",
     price: "27.000đ",
-    quantity: "Còn 15 suất",
+    quantity: 1,
+    note: "Còn 15 suất",
   },
   {
     id: "2",
@@ -13,7 +14,8 @@ const sideDish = [
     image: require("../../assets/Dish5.png"),
     beforeDiscount: "30.000đ",
     price: "27.000đ",
-    quantity: "Còn 15 suất",
+    quantity: 1,
+    note: "Còn 15 suất",
   },
   {
     id: "3",
@@ -21,7 +23,8 @@ const sideDish = [
     image: require("../../assets/Dish6.png"),
     beforeDiscount: "30.000đ",
     price: "27.000đ",
-    quantity: "Còn 15 suất",
+    quantity: 1,
+    note: "Còn 15 suất",
   },
 ];
 

@@ -16,7 +16,7 @@ import Icon from "react-native-vector-icons/Feather";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import Flatlist from "../components/HomeFlatlist";
 import HomeFlatlist from "../components/HomeFlatlist";
-import MyHeader from "../components/MyHeader";
+import HeaderWithIcon from "../components/HeaderWithIcon";
 import BlankPage from "../components/BlankPage";
 
 const topTab = createMaterialTopTabNavigator();
@@ -24,7 +24,7 @@ const topTab = createMaterialTopTabNavigator();
 const OrderScreen = () => {
   return (
     <View style={styles.container}>
-      <MyHeader title="ĐƠN HÀNG" />
+      <HeaderWithIcon title="ĐƠN HÀNG" />
       <topTab.Navigator
         tabBarOptions={{
           labelStyle: { textTransform: "none", fontSize: 16 },

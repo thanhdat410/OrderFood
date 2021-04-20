@@ -5,15 +5,17 @@ const mainDish = [
     image: require("../../assets/Dish1.png"),
     beforeDiscount: "30.000đ",
     price: "27.000đ",
-    quantity: "Còn 15 suất",
+    quantity: 1,
+    note: "Còn 15 suất",
   },
   {
     id: "2",
     name: "Cơm chả trứng",
     image: require("../../assets/Dish2.png"),
-    beforeDiscount: null,
+    //beforeDiscount: null,
     price: "27,000đ",
-    quantity: "Hết hàng",
+    quantity: 1,
+    note: "Hết hàng",
   },
   {
     id: "3",
@@ -21,7 +23,8 @@ const mainDish = [
     image: require("../../assets/Dish3.png"),
     beforeDiscount: "30.000đ",
     price: "27.000đ",
-    quantity: "Còn 15 suất",
+    quantity: 1,
+    note: "Còn 15 suất",
   },
 ];
 

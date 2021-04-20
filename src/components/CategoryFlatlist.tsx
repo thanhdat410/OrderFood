@@ -10,8 +10,19 @@ import {
 } from "react-native";
 
 import AIcon from "react-native-vector-icons/AntDesign";
-
-const CategoryFlatlist = (props: any) => {
+interface dish {
+  id: string;
+  name: string;
+  image: any;
+  beforeDiscount?: string;
+  price: string;
+  quantity: number;
+  note: string;
+}
+interface Cate {
+  data: dish[];
+}
+const CategoryFlatlist = (props: Cate) => {
   return (
     <View style={{ flex: 1 }}>
       <FlatList
@@ -56,7 +67,7 @@ const CategoryFlatlist = (props: any) => {
               </Text>
             </View>
 
-            <Text style={{ textAlign: "center" }}>{item.quantity}</Text>
+            <Text style={{ textAlign: "center" }}>{item.note}</Text>
 
             <View
               style={{

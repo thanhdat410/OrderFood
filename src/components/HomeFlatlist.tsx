@@ -1,41 +1,103 @@
 import * as React from "react";
 import {
+  FlatList,
   Image,
   ImageBackground,
+  ListRenderItem,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  FlatList,
 } from "react-native";
-
 import AIcon from "react-native-vector-icons/AntDesign";
-import Icon from "react-native-vector-icons/Feather";
-import MainDishData from "../components/DataCategoryDish/MainDishData";
-import SideDishData from "../components/DataCategoryDish/SideDishData";
-import DrinkData from "../components/DataCategoryDish/DrinkData";
+import CartModal from "./CartModal";
+import DrinkData from "./CategoryData/DrinkData";
+import MainDishData from "./CategoryData/MainDishData";
+import SideDishData from "./CategoryData/SideDishData";
+import RenderHomeFlatlist from "./RenderHomeFlatlist";
 
-const HomeFlatlist = () => {
-  // interface typeDish {
-  //   id: string;
-  //   name: string;
-  //   type: any;
-  // }
+const HomeFlatlist = (props: any) => {
+  let numb: number = 0;
+
+  // const [quantity, addQuantity] = React.useState(1);
+  const [mainDish, setMain] = React.useState(MainDishData);
+  const [sideDish, setSide] = React.useState(SideDishData);
+  const [drink, setDrink] = React.useState(DrinkData);
+
+  const [dish, setDish] = React.useState([{}]);
+
+  const getType = (prop: string) => {
+    let type = prop;
+    return type;
+  };
+
+  const checkIndex = (arr: any[], id: any) => {
+    return arr.findIndex((item) => item.id === id);
+  };
+
+  const handleCart = (a: number) => {
+    props.fixCount(a);
+    numb = props.getCount();
+    console.log(numb);
+    if (numb > 9) {
+      props.fixSize();
+    }
+  };
+
+  // const getData = (props: any) => {
+  //   console.log(props);
+  // };
+
+  // const addQuantity = (item: any) => {
+  //   let newQuantity = item.quantity + 1;
+  //   const newItem = { ...item, quantity: newQuantity };
+
+  //   let indexID = checkIndex(MainDishData, item.id);
+
+  //   const newDish = [...guest];
+  //   newGuest.splice(indexID, 1, newItem);
+  //   // console.log(newGuest);
+  //   setQuantity(newGuest);
+  //   // console.log(guest);
+  // };
+
+  //   const renderItem: ListRenderItem<> = (item: any) => {
+  //     return <RenderHomeFlatlist data={item} />;
+  //  };
+
+  const renderItem = (item: any) => {
+    return (
+      <RenderHomeFlatlist
+        data={item}
+        cartClick={handleCart}
+        getData={props.getData}
+        // setCount={props.setCount()}
+        // setSize={props.setSize()}
+        // getCount={props.getCount()}
+      />
+    );
+  };
+
+  interface typeDish {
+    id: string;
+    name: string;
+    type: object;
+  }
   const [typeDish] = React.useState([
     {
       index: "1",
       name: "Món chính",
-      type: MainDishData,
+      type: mainDish,
     },
     {
       index: "2",
       name: "Món phụ",
-      type: SideDishData,
+      type: sideDish,
     },
     {
       index: "3",
       name: "Nước uống",
-      type: DrinkData,
+      type: drink,
     },
   ]);
 
@@ -55,95 +117,7 @@ const HomeFlatlist = () => {
             keyExtractor={(item) => item.id}
             data={item.type}
             horizontal
-            renderItem={({ item }) => (
-              <View
-                style={{
-                  padding: 10,
-                  alignItems: "center",
-                }}
-              >
-                <ImageBackground source={item.image} style={styles.dish}>
-                  <Image source={require("../assets/DiscountTag.png")}></Image>
-                </ImageBackground>
-
-                <Text style={{ textAlign: "center", width: "75%", height: 40 }}>
-                  {item.name}
-                </Text>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: "gray",
-                      textDecorationLine: "line-through",
-                      textDecorationStyle: "solid",
-                    }}
-                  >
-                    {item.beforeDiscount}
-                  </Text>
-                  <Text
-                    style={{
-                      fontSize: 16,
-                      fontWeight: "bold",
-                      color: "red",
-                      marginLeft: 10,
-                    }}
-                  >
-                    {item.price}
-                  </Text>
-                </View>
-
-                <Text style={{ textAlign: "center" }}>{item.quantity}</Text>
-
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <TouchableOpacity>
-                    <AIcon name="minussquareo" size={35}></AIcon>
-                  </TouchableOpacity>
-                  <Text
-                    style={{
-                      fontWeight: "bold",
-                      fontSize: 17,
-                      paddingHorizontal: 15,
-                    }}
-                  >
-                    1
-                  </Text>
-                  <TouchableOpacity onPress={() => {}}>
-                    <AIcon name="plussquareo" size={35}></AIcon>
-                  </TouchableOpacity>
-                </View>
-
-                <TouchableOpacity
-                  style={{
-                    backgroundColor: "#421514",
-                    marginTop: 10,
-                    borderRadius: 5,
-                  }}
-                  onPress={() => {}}
-                >
-                  <Text
-                    style={{
-                      paddingVertical: 10,
-                      paddingHorizontal: 15,
-                      textAlign: "center",
-                      color: "white",
-                    }}
-                  >
-                    Thêm vào giỏ
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            )}
+            renderItem={renderItem}
           />
         </View>
       )}

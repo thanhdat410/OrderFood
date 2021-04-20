@@ -2,12 +2,22 @@ import * as React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import IonIcon from "react-native-vector-icons/Ionicons";
 import SLIcon from "react-native-vector-icons/SimpleLineIcons";
+import { useNavigation } from "@react-navigation/native";
 
-const MyHeader = (props: any) => {
+interface IProps {
+  title: string;
+}
+
+const HeaderWithoutIcon = (props: IProps) => {
+  const navigation = useNavigation();
   return (
-    <View style={{ height: "15%", backgroundColor: "#FDD40C" }}>
+    <View style={{ paddingVertical: 15, backgroundColor: "#FDD40C" }}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}
+        >
           <IonIcon
             name="arrow-back"
             size={30}
@@ -20,12 +30,11 @@ const MyHeader = (props: any) => {
             name="handbag"
             size={30}
             style={{
-              backgroundColor: "pink",
+              backgroundColor: "#FDD40C",
               paddingHorizontal: 10,
               paddingVertical: 10,
               marginRight: 10,
-              opacity: 0.8,
-              borderRadius: 5,
+              color: "#FDD40C",
             }}
           ></SLIcon>
         </TouchableOpacity>
@@ -34,7 +43,7 @@ const MyHeader = (props: any) => {
   );
 };
 
-export default MyHeader;
+export default HeaderWithoutIcon;
 
 const styles = StyleSheet.create({
   header: {
